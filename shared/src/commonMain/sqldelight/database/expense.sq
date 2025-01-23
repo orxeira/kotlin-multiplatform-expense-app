@@ -1,0 +1,26 @@
+import kotlin.Int;
+
+CREATE TABLE IF NOT EXISTS expenseEntity (
+    id INTEGER AS Int NOT NULL PRIMARY KEY AUTOINCREMENT,
+    description TEXT NOT NULL,
+    amount REAL NOT NULL,
+    date TEXT NOT NULL,
+    category TEXT NOT NULL
+);
+
+insertExpense:
+INSERT OR REPLACE
+INTO expenseEntity (description, amount, date, category)
+VALUES (?,?,?,?);
+
+getAllExpenses:
+SELECT * FROM expenseEntity ORDER BY date DESC;
+
+getExpenseById:
+SELECT * FROM expenseEntity WHERE id = ?;
+
+deleteExpenseById:
+DELETE FROM expenseEntity WHERE id = ?;
+
+deleteAllExpenses:
+DELETE FROM expenseEntity;
